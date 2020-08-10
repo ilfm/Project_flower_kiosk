@@ -37,7 +37,7 @@ class Cho
 		ui = new Hashtable<String, UserInfo>();
 
       
-		//tot 초기화
+		  //tot 초기화
 		  tot.add(new Flower_tot("1","수선화",50,1000, "자기 사랑, 자존심, 고결, 신비   "));
 	      tot.add(new Flower_tot("2","물망초",50,2000,"날 잊지마세요, 진실한 사랑       "));
 	      tot.add(new Flower_tot("3","노란장미",50,1000, "완벽한 성취, 질투, 시기       "));
@@ -63,7 +63,7 @@ class Cho
 	      tot.add(new Flower_tot("23","유칼리투스",50,1000,"추억                              "));
 
 
-		//초기 꽃 재고
+	      //초기 꽃 재고
 	      fl.add(new Flower("수선화","1",50, "2020-03-12",6));
 	      fl.add(new Flower("물망초","2", 50,  "2020-03-12",6));
 	      fl.add(new Flower("노란장미","3", 50,  "2020-03-11",5));

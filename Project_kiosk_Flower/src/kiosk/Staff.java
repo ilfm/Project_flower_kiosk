@@ -24,10 +24,8 @@ class Staff
       System.out.println("================================================================================");
       System.out.println("[SMART FLOWER 관리자로그인]                                      「X = 종료하기 」");
       System.out.println("================================================================================");
-	  System.out.println("▶ 아이디 입력:");
-	  System.out.println("▶ 비밀번호 입력:");
       System.out.println();
-      CLIO.clearScreen(23);
+
 
       //입력받는 id와 STF_ID 변수 비교(아닐경우...) 반복
       while(!(id.equals(STF_ID) && pw.equals(STF_PW)))
@@ -970,12 +968,12 @@ class Staff
               
          Calendar cal = Calendar.getInstance();
          System.out.println(cal.getTime());
-         cal.set(2020,2,16,8,00);
+         //cal.set(2020,8,10,16,18);
          System.out.println(cal.getTime());
 
          
          
-   /*      주석풀게되면 count가 하나씩 줄어들어서 일단 주석처리
+         //주석풀게되면 count가 하나씩 줄어들어서 일단 주석처리
          Timer m_timer = new Timer();
          TimerTask m_task = new TimerTask(){
          
@@ -983,7 +981,7 @@ class Staff
             public void run(){
 
                //카운트 -1해주는 부분
-               //System.out.println("시작");
+               System.out.println("시작");
                for(int i =0; i<Cho.fl.size(); i++){
 
                   Cho.fl.get(i).setF_count((Cho.fl.get(i).getF_count()-1));
@@ -996,8 +994,8 @@ class Staff
             }
          };
 
-        m_timer.scheduleAtFixedRate(m_task,cal.getTime(),86400000);
-   */   
+        m_timer.scheduleAtFixedRate(m_task,cal.getTime(),8000);
+      
    }
 
    public static void clearScreen()

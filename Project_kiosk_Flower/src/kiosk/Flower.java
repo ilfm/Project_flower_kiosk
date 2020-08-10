@@ -80,6 +80,12 @@ class Flower
 	{
 		return f_count;
 	}
+	
+	
+	public void setF_count(int f_count) {
+		this.f_count = f_count;
+	}
+
 	public void setFl_cl(int fl_clUser) //사용자가 입력한 값
     {
 		this.f_su-=fl_clUser;

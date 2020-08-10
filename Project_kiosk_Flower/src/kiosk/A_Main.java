@@ -7,6 +7,7 @@ class A_Main
 
 	static void cus_maindisp()
 	{
+		Staff.stf_CheckExp();
 		System.out.println("=============================================================");
 		System.out.println("                        [SMART FLOWER]                       ");
 		System.out.println("=============================================================");
