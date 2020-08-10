@@ -19,7 +19,7 @@ public class B_DIYFlower
       
       for(int i =0; i<Cho.tot.size(); i++)
       {
-            System.out.printf("%3s\t%-6s\t%-25s\t%-1d\t%-1d\n",Cho.tot.get(i).getFt_num(),Cho.tot.get(i).getFt_name(),Cho.tot.get(i).getFt_mean(),Cho.tot.get(i).getFt_price(),Cho.fl_tot_cl.get(i).getFt_tot());
+            System.out.printf("%3s\t%-6s\t%-50s\t%-5d\t%-5d\n",Cho.tot.get(i).getFt_num(),Cho.tot.get(i).getFt_name(),Cho.tot.get(i).getFt_mean(),Cho.tot.get(i).getFt_price(),Cho.fl_tot_cl.get(i).getFt_tot());
       }
       mainFlower();
       

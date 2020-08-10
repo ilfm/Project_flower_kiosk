@@ -36,7 +36,7 @@ class CLIO	//CLearscreenInputObject
 		}
 	}
 
-	public static int input()
+	public static int input()	//「M = 둘러보기 (메인화면으로 )」 / 「X = 종료하기」
 	{
 		Scanner sc = new Scanner(System.in);
 		String select = sc.next();
@@ -47,32 +47,43 @@ class CLIO	//CLearscreenInputObject
 		}
 		else if(select.equals("X")  || select.equals("x")) 
 		{
+			// X 입력 시 장바구니에 있던 것들을 모두 취소하고 메인으로 돌아가야 한다.
+			// fl_cl 을 기존의 fl로 초기화 한다.
 			Cho.fl_cl = Cho.boksa(Cho.fl);
-			Cho.fl_tot_cl=Cho.boksa_tot(Cho.tot);
+			
+			// fl_tot_cl 을 기존의 fl_tot로 초기화 한다.
+			Cho.fl_tot_cl = Cho.boksa_tot(Cho.tot);
 			int a = FlowerKiosk.CartDB_list.size();
+			
+			// 장바구니에 있는 모든 정보를 제거 한다.
 			for(int i=a-1;i>=0;i--) {
-			FlowerKiosk.CartDB_list.remove(i);
+				
+				FlowerKiosk.CartDB_list.remove(i);
 			
 			}
-			int v=Cho.adp_ob.getMsg();
+			
+			int v = Cho.adp_ob.getMsg();
 			Cho.adp_ob.setMsg(v+=G_UserOrder.adp_tot[0]);
+			
 			v=Cho.adp_ob.getBasket();
 			Cho.adp_ob.setBasket(v+=G_UserOrder.adp_tot[1]);
+			
 			v=Cho.adp_ob.getPaper();
 			Cho.adp_ob.setPaper(v+=G_UserOrder.adp_tot[2]);
+			
 			v=Cho.adp_ob.getRibbon();
 			Cho.adp_ob.setRibbon(v+=G_UserOrder.adp_tot[3]);
+			
 			v=Cho.adp_ob.getMiniflo();
 			Cho.adp_ob.setMiniflo(v+=G_UserOrder.adp_tot[4]);
+			
 			throw new MainException();
 		}
-		else if(select.equals("C")||select.equals("c"))
-		{
-//			throw new 
-		}
-
+		
+		
 		int temp = Integer.parseInt(select);
 		return temp;
+		
 	}
 	
 

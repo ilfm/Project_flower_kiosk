@@ -91,7 +91,7 @@ class Cho
 
 
 		length = tot.size();
-		fl_cl=new LinkedList<Flower>(fl);
+		fl_cl=new LinkedList<Flower>();
 		fl_tot_cl = new LinkedList<Flower_tot>();
 
 		fl_cl = boksa(fl);

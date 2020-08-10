@@ -19,16 +19,16 @@ public class FlowerKiosk
 	   while(true)
 	   {
 		   count++;
-	   try
-		{
-			A_Main.cus_maindisp();
-			A_Main.cus_maininput();
-		}
-		catch (MainException e)
-		{
-			CLIO.clearScreen_10();
-			count++;
-		}
+		   try
+			{
+				A_Main.cus_maindisp();
+				A_Main.cus_maininput();
+			}
+			catch (MainException e)
+			{
+				CLIO.clearScreen_10();
+				count++;
+			}
 
 	   }
 
