@@ -8,7 +8,7 @@ class Flower
 	String f_name;		// 꽃명
 	String f_num;		// 상품코드
 	int f_su;			// 수량
-	int f_count =7;		// 카운트
+	int f_count = 7;		// 카운트
 	String f_wareDate;	// 입고날짜
 
 	public Flower()

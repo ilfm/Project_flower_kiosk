@@ -3,7 +3,7 @@ class Flower_tot
 {
 	String ft_num;		// 선택번호
 	String ft_name;		// 상품명
-	String ft_mean;
+	String ft_mean;		// 꽃말
 	int ft_tot;			// 재고
 	int ft_price;		// 가격
 	int ft_rank = 1;

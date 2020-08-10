@@ -91,7 +91,9 @@ class Cho
 
 
 		length = tot.size();
-		fl_cl=new LinkedList<Flower>();
+		
+		// 장바구니를 위해 기존에 있는 정보를 복사한 복사본 사용한다.
+		fl_cl = new LinkedList<Flower>();
 		fl_tot_cl = new LinkedList<Flower_tot>();
 
 		fl_cl = boksa(fl);
@@ -101,20 +103,31 @@ class Cho
 		//UserInfo u_ob = new UserInfo();
 		
 	}
-	public static List<Flower> boksa(List<Flower> list){
-		List<Flower> temp = new ArrayList<Flower>();
-			for(int i=0; i< list.size(); i++)
-			{
-				temp.add(new Flower(list.get(i).getF_name(),list.get(i).getF_num() , list.get(i).getF_su() ,list.get(i).getF_wareDate()));   
-			}return temp;      
-		}
-	public static List<Flower_tot> boksa_tot(List<Flower_tot> list){
-		List<Flower_tot> temp = new ArrayList<Flower_tot>();
-			for(int i=0; i< list.size(); i++){   //tot.add(new Flower_tot("1","수선화",40,1000));
-				temp.add(new Flower_tot(list.get(i).getFt_num(),list.get(i).getFt_name() , list.get(i).getFt_tot() ,list.get(i).getFt_price(), list.get(i).getFt_mean()));
-				}return temp;      
+		// 기존에 있는 제품 재고 정보를 복사하는 함수
+		public static List<Flower> boksa(List<Flower> list){
+			List<Flower> temp = new ArrayList<Flower>();
+			for(int i=0; i< list.size(); i++){
+				temp.add(new Flower(list.get(i).getF_name()				// 제품명
+									, list.get(i).getF_num() 			// 제품 코드
+									, list.get(i).getF_su() 			// 재고량
+									, list.get(i).getF_wareDate()));    // 입고 일자
 			}
+			return temp;      
 		}
+		// 기존에 있는 꽃 재고의 총합 정보를 복사하는 함수 
+		public static List<Flower_tot> boksa_tot(List<Flower_tot> list){
+			List<Flower_tot> temp = new ArrayList<Flower_tot>();
+			
+			for(int i=0; i< list.size(); i++){   
+				temp.add(new Flower_tot(list.get(i).getFt_num()			// 선택 코드
+										, list.get(i).getFt_name()		// 제품명
+										, list.get(i).getFt_tot() 		// 총 재고량
+										, list.get(i).getFt_price()		// 가격
+										, list.get(i).getFt_mean()));	// 꽃말
+			}
+			return temp;      
+		}
+	}
 
 class MyComparator<T> implements Comparator<T>
 { 
