@@ -27,6 +27,7 @@ public class FlowerKiosk
 			}
 			catch (MainException e)
 			{
+				// 콘솔 화면 밀어버리는 함수 
 				CLIO.clearScreen_10();
 				count++;
 			}
