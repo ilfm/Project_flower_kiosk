@@ -5,10 +5,11 @@ import java.text.*;
 
 class Cho
 {   
-	//꽃 담는 DB LinkedList 
+	// 꽃 재고를 담은 LinkedList 
 	static List<Flower> fl;
-	//꽃의 총량 DB ArrayList 
+	// 꽃 재고 총 수량을 담은 ArrayList 
 	static List<Flower_tot> tot;
+	
 	static Hashtable<String, UserInfo> ui;
 	static Money money;
 	static Flower_tot ft_o;
@@ -16,10 +17,12 @@ class Cho
 	static MyComparator2<Flower> mc2;
 	static MyComparator3<Flower> mc3;
 	static int length, length1;
-	//fl의 클론
+	
+	// fl의 클론
 	static List<Flower> fl_cl;
-	//tot의 클론
+	// tot의 클론
     static List<Flower_tot> fl_tot_cl;
+    
 	static Adp adp_ob;
     
 	static

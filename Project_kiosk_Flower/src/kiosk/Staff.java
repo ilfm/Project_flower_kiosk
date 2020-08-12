@@ -220,7 +220,7 @@ class Staff
         System.out.println("================================================================================");
        System.out.println();
        System.out.println("                              [꽃 재고 현황]                                                 ");
-        System.out.println("                     [No.]\t [상품명]    [남은수량]  ");
+        System.out.println("                     [No.]\t [상품명]             [남은수량]  ");
        System.out.println();
       
       //오름차순으로 tot ArrayList 정렬
@@ -234,18 +234,18 @@ class Staff
          {
 
          Flower_tot to = it.next();
-         System.out.printf("                       %-1s\t %-7s\t%-4d \n" ,to.getFt_num(),to.getFt_name(),to.getFt_tot());
+         System.out.printf("                       %-1s\t %-20s\t %-4d \n" ,to.getFt_num(),to.getFt_name(),to.getFt_tot());
 
          }
 
          System.out.println();
          System.out.println("                           [추가구매 재고 현황]                                                  ");
          System.out.println();
-         System.out.printf("                       1.   메세지카드   :     %d\n",Cho.adp_ob.getMsg() );
-         System.out.printf("                       2.     바구니    :     %d\n", Cho.adp_ob.getBasket());
-         System.out.printf("                       3.     포장지    :     %d\n",Cho.adp_ob.getPaper() );
-         System.out.printf("                       4.     리본      :     %d\n",Cho.adp_ob.getRibbon() );
-         System.out.printf("                       5.     미니꽃다발     :     %d\n",Cho.adp_ob.getMiniflo() );
+         System.out.printf("\t\t\t1.   메세지카드\t:     %d\n",Cho.adp_ob.getMsg() );
+         System.out.printf("\t\t\t2.     바구니\t:     %d\n", Cho.adp_ob.getBasket());
+         System.out.printf("\t\t\t3.     포장지\t:     %d\n",Cho.adp_ob.getPaper() );
+         System.out.printf("\t\t\t4.     리본\t:     %d\n",Cho.adp_ob.getRibbon() );
+         System.out.printf("\t\t\t5.     미니꽃다발\t:     %d\n",Cho.adp_ob.getMiniflo() );
          System.out.println();
           System.out.println("================================================================================");
 

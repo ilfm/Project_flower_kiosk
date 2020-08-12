@@ -3,6 +3,7 @@ import java.util.*;
 import java.io.*;
 import java.text.DecimalFormat;
 
+// 메인으로 돌아가는 예외 
 class MainException extends RuntimeException{
 
 }

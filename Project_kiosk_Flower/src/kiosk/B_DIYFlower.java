@@ -117,7 +117,7 @@ public class B_DIYFlower
    public static void subFlower(){
 
 
-     boolean flag=false;                                                                     // 반복문 제어 변수 설정
+     boolean flag = false;                                                                     // 반복문 제어 변수 설정
      int selectNo=0;
      int putSu=0;
      String select="";
