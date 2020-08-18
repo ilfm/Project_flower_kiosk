@@ -36,14 +36,14 @@ class Staff
          
          //"X"&"x" 일경우 예외처리를 통한 메인 메소드 출력
          if(id.equals("X") || id.equals("x"))
-            throw new s_MainException();
+        	 throw new s_MainException();
 
          System.out.print("▶ 비밀번호 입력:");
          pw = sc.next();
          
          //"X"&"x" 일경우 예외처리를 통한 메인 메소드 출력
          if(pw.equals("X") || pw.equals("x"))
-            throw new s_MainException();
+        	 throw new s_MainException();
 
          //ID와 PW에 입력되는 값이 STF_ID/PW변수에 저장된 정보와 다를경우
          if(!(id.equals(STF_ID) && pw.equals(STF_PW)))
@@ -64,39 +64,39 @@ class Staff
    //--- Staff 메뉴
    class Stf_Menus
    {
-      private static final int STF_STACK= 1; //재고관리 메소드     
-      private static final int STF_MONEY = 2; //잔고관리 메소드          
+	   private static final int STF_STACK= 1; //재고관리 메소드     
+	   private static final int STF_MONEY = 2; //잔고관리 메소드          
       
    }
    
    //--- 관리자메인화면
    public static void stf_menuDisp()
    {
-      try
-      {
-      System.out.println("================================================================================");
-      System.out.println("[SMART FLOWER 관리자모드]                                      「X = 종료하기 」");
-      System.out.println("================================================================================");
-      System.out.println();
-      System.out.println("                                  1.재고 관리");
-      System.out.println();
-      System.out.println("                                  2.잔고 관리");
-      System.out.println();
-      System.out.println("================================================================================");
-      System.out.println();
+	   try
+	   {
+		   System.out.println("================================================================================");
+		   System.out.println("[SMART FLOWER 관리자모드]                                      「X = 종료하기 」");
+		   System.out.println("================================================================================");
+		   System.out.println();
+		   System.out.println("                                  1.재고 관리");
+		   System.out.println();
+		   System.out.println("                                  2.잔고 관리");
+		   System.out.println();
+		   System.out.println("================================================================================");
+		   System.out.println();
 
-      //잔고 없을 때 호출
-      exc_Print();
+		   //잔고 없을 때 호출
+		   exc_Print();
 
-      //유통기한 지난(삭제된)상품 출력
-      stf_FExp_Del_print();
+		   //유통기한 지난(삭제된)상품 출력
+		   stf_FExp_Del_print();
       
-      //재고 부족 메소드 호출
-      shortage();
+		   //재고 부족 메소드 호출
+		   shortage();
 
-      //메뉴 선택메소드 호출 
-      stf_menuSelect();
-      }
+		   //메뉴 선택메소드 호출 
+		   stf_menuSelect();
+	   }
 
       catch(s_MainException  m)
       {
@@ -214,13 +214,12 @@ class Staff
     }
    public static void stf_FStackPrint()
    {
-
-      System.out.println("================================================================================");
-        System.out.println("[SMART FLOWER 꽃 재고 관리]              「M = 관리자 메인」 / 「X = 종료하기」");
-        System.out.println("================================================================================");
+	   System.out.println("================================================================================");
+	   System.out.println("[SMART FLOWER 꽃 재고 관리]              「M = 관리자 메인」 / 「X = 종료하기」");
+       System.out.println("================================================================================");
        System.out.println();
        System.out.println("                              [꽃 재고 현황]                                                 ");
-        System.out.println("                     [No.]\t [상품명]             [남은수량]  ");
+       System.out.println("                     [No.]\t [상품명]             [남은수량]  ");
        System.out.println();
       
       //오름차순으로 tot ArrayList 정렬
@@ -247,7 +246,7 @@ class Staff
          System.out.printf("\t\t\t4.     리본\t:     %d\n",Cho.adp_ob.getRibbon() );
          System.out.printf("\t\t\t5.     미니꽃다발\t:     %d\n",Cho.adp_ob.getMiniflo() );
          System.out.println();
-          System.out.println("================================================================================");
+         System.out.println("================================================================================");
 
          int select = 0 ;
 
@@ -303,100 +302,92 @@ class Staff
 
    }//stf_FStackPrint 꽃 재고현황 및 추가구매 메소드 종료
 
-   //항목 추가 메소드
+   // 상품 항목 추가 메소드
    public static void  stf_ItemAdd()
    {
       
-      try
-      {
-      
-         String select="";     //항목 추가 변수
-         boolean check =false; //중복 항목 변수
-         String temp_item;     //새로운 추가 항목 변수
-
+	   try
+	   {      
+		   String select = "";     // 항목 추가 변수
+		   boolean check = false; // 중복 항목 변수
+		   String temp_item;     // 새로운 추가 항목 변수
          
-           do{
-            select="";
-            while(!(select.equals("N") || select.equals("n") || select.equals("Y") || select.equals("y")))
-            {
-               System.out.print("▶ 항목을 추가 하시겠습니까?( Y / N) :");
-               select = s_input();
-                  
-                  //N이나 n일 경우 관리자 메인화면으로 이동 (예외처리를 통한...)
-                  if(select.equals("N") || select.equals("n"))
-                  //예외를 관리자메인으로 던진다..
-                     throw new StaffMainException();
-            }
+           do{        	   
+		        select = "";
+		        // 항목 추가 여부 입력 반복문
+		        while(!(select.equals("N") || select.equals("n") || select.equals("Y") || select.equals("y")))
+		        {
+		           // 항목을 추가 하시겠습니까? 안내문 출력
+		           System.out.print("▶ 항목을 추가 하시겠습니까?( Y / N) :");
+		           select = s_input();
+		              
+		           // 입력값이 N이나 n일 경우 관리자 메인으로 돌아간다. 
+		           if(select.equals("N") || select.equals("n"))
+		        	   throw new StaffMainException();
+		        }
+		        // 항목 중복 여부 반복문
+	            do{   
+	            	check = false;
+	            	// "추가할 할목의 이름을 입력해주세요" 안내문 출력
+			        System.out.print("▶ 추가할 항목의 이름을 입력해주세요 :");
+			        temp_item =s_input().trim();
+			        
+			        // 상품 중복 체크 
+			        for(int i = 0; i < Cho.tot.size()-1 ; i++)
+			        {
+			        	// 이름이 있다면 check = true 다시 입력 받아야 한다.
+			        	if(temp_item.equals(Cho.tot.get(i).getFt_name()))
+			        		check = true;			
+			        }
+			        
+			        if(check == true)
+			        System.out.println(" ※ 다시 입력해주세요");            
+	
+	            }while(check);
+                     
+	            //새로운 꽃의 항목을 추가
+	            Cho.tot.add(new Flower_tot(temp_item)); 
 
-            
-         do{   
-            check=false;
-            System.out.print("▶ 추가할 항목의 이름을 입력해주세요 :");
-            temp_item =s_input().trim();
-         
-            for(int i = 0; i < Cho.tot.size()-1 ; i++)
-            {
-               
-               if(temp_item.equals(Cho.tot.get(i).getFt_name()))
-               {// 이름이 있다면 true 다시 입력 받아야 한다.
-                  check=true;
-                  
-               }
-
-            }
-
-            if(check==true)
-               System.out.println(" ※ 다시 입력해주세요");            
-
-         }while(check);
-            
-         
-            //새로운 꽃의 항목을 추가
-            Cho.tot.add(new Flower_tot(temp_item)); 
-            
-
-               System.out.print("▶ 추가할 항목의 꽃말을 입력해주세요 :");
-               String temp_mean =s_input().trim();
-
-               Cho.tot.get(Cho.tot.size()-1).setFt_mean(temp_mean);
-            
-            while(true)
-            {
-               try
-               {
-                  System.out.print("▶ 항목의 가격을 입력해주세요 :");
-                  int temp_price =input();
-                  Cho.tot.get(Cho.tot.size()-1).setFt_price(temp_price);
-                  break;
-               }
-               
-               //숫자 이외에 문자가 들어오면 예외처리 발생 continue를 통해 try 재 출력
-               catch(NumberFormatException n1)
-               {
-
-                  System.out.println("다시 입력해주세요");
-                  continue;            
-
-               }
-            }
+	            System.out.print("▶ 추가할 항목의 꽃말을 입력해주세요 :");
+	            String temp_mean =s_input().trim();
+	           
+	            // 마지막 인덱스에 꽃말정보 입력 
+                Cho.tot.get(Cho.tot.size()-1).setFt_mean(temp_mean);
+                
+                // 상품 가격 입력 반복문
+	            while(true)
+	            {
+	               try
+	               {
+	                  System.out.print("▶ 항목의 가격을 입력해주세요 :");
+	                  int temp_price =input();
+	                  Cho.tot.get(Cho.tot.size()-1).setFt_price(temp_price);
+	                  break;
+	               }	               
+	               //숫자 이외에 문자가 들어오면 예외처리 발생 continue를 통해 try 재 출력
+	               catch(NumberFormatException n1)
+	               {
+	                  System.out.println("다시 입력해주세요");
+	                  continue;            
+	               }
+	            }
 
                String temp_num ="";
                temp_num += Cho.tot.size();
                Cho.tot.get(Cho.tot.size()-1).setFt_num(temp_num);
 
          }while(select.equals("Y") || select.equals("y"));
+           
       }
-
-      //M이 입력되면 관리자 메인으로 이동 후 cleanScreen/main메소드 호출 
+      // M이 입력되면 관리자 메인으로 이동 후 cleanScreen/구매가 main메소드 호출 
       catch(s_MainException m)
       {
-
-         System.out.println("메인으로 돌아갑니다.");
-         clearScreen();
-            A_Main.cus_maindisp();  
-            A_Main.cus_maininput();
+    	  System.out.println("메인으로 돌아갑니다.");
+    	  clearScreen();
+    	  A_Main.cus_maindisp();  
+          A_Main.cus_maininput();
       }
-   }
+   }// end stf_ItemAdd()
 
    //관리자 항목 삭제 메소드
    public static void stf_ItemDel()
@@ -650,35 +641,35 @@ class Staff
    //--유통기한 지난 상품 출력해주는 메소드
    public static void stf_FExp_Del_print()
    {
-      //Calendar 클래스 기반 인스턴스 생성 (현재시간을 위한 객체)
-      Calendar rightNow = Calendar.getInstance();
-      String nowDate = "";
-      //현재시간 
-      nowDate += rightNow.get(Calendar.YEAR);
-      nowDate += 0;
-      nowDate += (rightNow.get(Calendar.MONTH) + 1);
-      nowDate += rightNow.get(Calendar.DATE);
+	   //Calendar 클래스 기반 인스턴스 생성 (현재시간을 위한 객체)
+	   Calendar rightNow = Calendar.getInstance();
+	   String nowDate = "";
+	   //현재시간 
+	   nowDate += rightNow.get(Calendar.YEAR);
+	   nowDate += 0;
+	   nowDate += (rightNow.get(Calendar.MONTH) + 1);
+	   nowDate += rightNow.get(Calendar.DATE);
 
-      //삭제된 재고 출력문
-      System.out.println();
-      System.out.println("\t\t\t      ▶[ 삭제된 재고 ]◀");         //"%d %-6s\t%-6s\t\n"
-      System.out.println();
-      System.out.println("\t\t[ 상품명 ]    [ 입고된 날짜 ]     [수량]"); 
-      System.out.println();
+	   //삭제된 재고 출력문
+	   System.out.println();
+	   System.out.println("\t\t\t      ▶[ 삭제된 재고 ]◀");         //"%d %-6s\t%-6s\t\n"
+	   System.out.println();
+	   System.out.println("\t\t[ 상품명 ]    [ 입고된 날짜 ]     [수량]"); 
+	   System.out.println();
 
-      String temp_ware="";
+	   String temp_ware="";
       
-      for(int i =0; i<Cho.fl.size()-1; i++)
-      {
-         String[] a = (Cho.fl.get(i).getF_wareDate()).split("-");
-         for(int j = 0; j<a.length; j++)
-         {
-            temp_ware+= a[j];   //2020 03 20   //20200320 
-         }
+	   for(int i =0; i<Cho.fl.size()-1; i++)
+	   {
+		   String[] a = (Cho.fl.get(i).getF_wareDate()).split("-");
+		   for(int j = 0; j<a.length; j++)
+		   {
+			   temp_ware+= a[j];   //2020 03 20   //20200320 
+		   }
 
-         if((Integer.parseInt(nowDate) - Integer.parseInt(temp_ware) >=7) )     //타이머로 하루에 한번 체크해주기
-               System.out.printf("\t\t%-6s\t%-10s\t    %-10s\t\n",Cho.fl.get(i).getF_name(),Cho.fl.get(i).getF_wareDate(),Cho.fl.get(i).getF_su());   
-         temp_ware="";   
+		   if((Integer.parseInt(nowDate) - Integer.parseInt(temp_ware) >=7) )     //타이머로 하루에 한번 체크해주기
+			   System.out.printf("\t\t%-6s\t%-10s\t    %-10s\t\n",Cho.fl.get(i).getF_name(),Cho.fl.get(i).getF_wareDate(),Cho.fl.get(i).getF_su());   
+		   temp_ware="";   
       }
       System.out.println();
       System.out.println("================================================================================");          
@@ -690,37 +681,7 @@ class Staff
 
 
 
-   //유통기한 지난 상품 삭제해주는 메소드
-   public static void stf_FExp_Del()
-   {
-      
-      //Calendar 클래스 기반 인스턴스 생성 (현재시간을 위한 객체)
-      Calendar rightNow = Calendar.getInstance();
-      String nowDate = "";
-      //현재시간 
-      nowDate += rightNow.get(Calendar.YEAR);
-      nowDate += 0;
-      nowDate += (rightNow.get(Calendar.MONTH) + 1);
-      nowDate += rightNow.get(Calendar.DATE);
 
-      
-      String temp_ware="";
-      
-      for(int i =0; i<Cho.fl.size()-1; i++)
-      {
-         String[] a = (Cho.fl.get(i).getF_wareDate()).split("-");
-         for(int j = 0; j<a.length; j++)
-         {
-            temp_ware= temp_ware + a[j];   //2020 03 20   //20200320 
-         }
-
-         if((Integer.parseInt(nowDate) - Integer.parseInt(temp_ware) >=7) )     //타이머로 하루에 한번 체크해주기
-            Cho.fl.remove(i);
-               
-         temp_ware="";      
-      }       
-   }
-   
    //--유통기한 관리 메소드
    public static void stf_FExp()
    {
@@ -896,8 +857,10 @@ class Staff
    public static int input()
     {
       Scanner sc = new Scanner(System.in);
+      // 사용자 입력 받아옴
       String select = sc.next();
-
+      
+      // 입력 값이 M 또는 m 일 경우 
       if(select.equals("M")  || select.equals("m"))
      {
          throw new StaffMainException();
@@ -962,16 +925,45 @@ class Staff
       return temp;      
 
    }
-   //하루에 한번 유통기한 count -1 하고 유통기한 7일 지난 상품 자동 삭제해주는 메소드
+   //유통기한 지난 상품 삭제해주는 메소드
+   public static void stf_FExp_Del()
+   {
+      
+      //Calendar 클래스 기반 인스턴스 생성 (현재시간을 위한 객체)
+      Calendar rightNow = Calendar.getInstance();
+      String nowDate = "";
+      //현재시간 
+      nowDate += rightNow.get(Calendar.YEAR);
+      nowDate += 0;
+      nowDate += (rightNow.get(Calendar.MONTH) + 1);
+      nowDate += rightNow.get(Calendar.DATE);
 
- public static void stf_CheckExp(){////////////////////////////////////////////////////////** 메인에 있던 유통기한 체크 -> 메소드를 만들어서 넣었습니다!
-              
-         Calendar cal = Calendar.getInstance();
-         System.out.println(cal.getTime());
-         //cal.set(2020,8,10,16,18);
-         System.out.println(cal.getTime());
+      
+      String temp_ware="";
+      
+      for(int i =0; i<Cho.fl.size()-1; i++)
+      {
+         String[] a = (Cho.fl.get(i).getF_wareDate()).split("-");
+         for(int j = 0; j<a.length; j++)
+         {
+            temp_ware= temp_ware + a[j];   //2020 03 20   //20200320 
+         }
 
+         if((Integer.parseInt(nowDate) - Integer.parseInt(temp_ware) >=7) )     //타이머로 하루에 한번 체크해주기
+            Cho.fl.remove(i);
+               
+         temp_ware="";      
+      }       
+   }
+     
+	 //하루에 한번 유통기한 count가 1씩 감소하고  유통기한 7일 지난 상품 자동 삭제해주는 메소드
+	 public static void stf_CheckExp(){
          
+		 // 시간을 설정 할수 있게 Calendar 를 생성한다.
+         Calendar cal = Calendar.getInstance();
+         // 시작 할 시간을 설정한다.
+         cal.set(2020,8,10,16,18); 
+        
          
          //주석풀게되면 count가 하나씩 줄어들어서 일단 주석처리
          Timer m_timer = new Timer();
@@ -979,18 +971,14 @@ class Staff
          
          @Override
             public void run(){
-
+        	 
                //카운트 -1해주는 부분
                System.out.println("시작");
-               for(int i =0; i<Cho.fl.size(); i++){
-
+               for(int i =0; i<Cho.fl.size(); i++)
                   Cho.fl.get(i).setF_count((Cho.fl.get(i).getF_count()-1));
-
-               }
-               //유통기한 지난 상품 지워주는 함수 호출
-               stf_FExp_Del();
-
                
+               //유통기한 지난 상품 지워주는 함수 호출
+               stf_FExp_Del();               
             }
          };
 

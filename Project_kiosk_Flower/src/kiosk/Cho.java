@@ -96,31 +96,41 @@ class Cho
 		length = tot.size();
 		
 		// 장바구니를 위해 기존에 있는 정보를 복사한 복사본 사용한다.
+		// fl의 복사본을 담을 fl_cl을 생성한다.
 		fl_cl = new LinkedList<Flower>();
+		// fl_tot의 복사본을 담을 fl_tot_cl을 생성한다.
 		fl_tot_cl = new LinkedList<Flower_tot>();
-
+		
+		// boksa() 메소드를 호출하여 fl의 복사본을 생성한다.
 		fl_cl = boksa(fl);
+		// boksa_tot() 메소드를 호출하여 fl_tot의 복사본을 생성한다.
 		fl_tot_cl = boksa_tot(tot);
      
 		//회원정보
 		//UserInfo u_ob = new UserInfo();
 		
 	}
-		// 기존에 있는 제품 재고 정보를 복사하는 함수
+		// 기존에 있는 제품 재고 정보를 복사하는 함수 (매개변수로 list를 넘겨 받는다.)
 		public static List<Flower> boksa(List<Flower> list){
+			
+			// 비어 있는 리스트 temp를 생성한다.
 			List<Flower> temp = new ArrayList<Flower>();
+			// 넘겨받은 list를 temp에 복사한다. 
 			for(int i=0; i< list.size(); i++){
 				temp.add(new Flower(list.get(i).getF_name()				// 제품명
 									, list.get(i).getF_num() 			// 제품 코드
 									, list.get(i).getF_su() 			// 재고량
 									, list.get(i).getF_wareDate()));    // 입고 일자
 			}
+			// 복사가 끝난 temp를 return 한다.
 			return temp;      
 		}
-		// 기존에 있는 꽃 재고의 총합 정보를 복사하는 함수 
+		// 기존에 있는 꽃 재고의 총합 정보를 복사하는 함수 (매개변수로 list를 넘겨 받는다.)
 		public static List<Flower_tot> boksa_tot(List<Flower_tot> list){
-			List<Flower_tot> temp = new ArrayList<Flower_tot>();
 			
+			// 비어있는 리스트 temp를 생성한다.
+			List<Flower_tot> temp = new ArrayList<Flower_tot>();
+			// 넘겨 받은 list를 temp에 복사한다.
 			for(int i=0; i< list.size(); i++){   
 				temp.add(new Flower_tot(list.get(i).getFt_num()			// 선택 코드
 										, list.get(i).getFt_name()		// 제품명
@@ -128,6 +138,7 @@ class Cho
 										, list.get(i).getFt_price()		// 가격
 										, list.get(i).getFt_mean()));	// 꽃말
 			}
+			// 복사가 끝난 temp를 return 한다.
 			return temp;      
 		}
 	}
