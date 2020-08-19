@@ -641,7 +641,7 @@ class Staff
    //--유통기한 지난 상품 출력해주는 메소드
    public static void stf_FExp_Del_print()
    {
-	   //Calendar 클래스 기반 인스턴스 생성 (현재시간을 위한 객체)
+	   // Calendar 클래스 기반 인스턴스 생성 (현재시간을 위한 객체)
 	   Calendar rightNow = Calendar.getInstance();
 	   String nowDate = "";
 	   //현재시간 
@@ -925,55 +925,64 @@ class Staff
       return temp;      
 
    }
-   //유통기한 지난 상품 삭제해주는 메소드
+   // 유통기한 지난 상품 삭제해주는 메소드
    public static void stf_FExp_Del()
-   {
-      
-      //Calendar 클래스 기반 인스턴스 생성 (현재시간을 위한 객체)
-      Calendar rightNow = Calendar.getInstance();
-      String nowDate = "";
-      //현재시간 
-      nowDate += rightNow.get(Calendar.YEAR);
-      nowDate += 0;
-      nowDate += (rightNow.get(Calendar.MONTH) + 1);
-      nowDate += rightNow.get(Calendar.DATE);
-
-      
-      String temp_ware="";
-      
-      for(int i =0; i<Cho.fl.size()-1; i++)
-      {
-         String[] a = (Cho.fl.get(i).getF_wareDate()).split("-");
-         for(int j = 0; j<a.length; j++)
-         {
-            temp_ware= temp_ware + a[j];   //2020 03 20   //20200320 
-         }
-
-         if((Integer.parseInt(nowDate) - Integer.parseInt(temp_ware) >=7) )     //타이머로 하루에 한번 체크해주기
-            Cho.fl.remove(i);
-               
-         temp_ware="";      
-      }       
+   {      
+	   // 모든 상품의 카운트를 체크해준다.
+	   for(int i =0; i<Cho.fl.size()-1; i++)
+	   {		  		   
+		   // 입고 날짜가 현재 날짜 기준 일주일이 지나면 재고에서 자동 삭제 된다. 
+		   if((Cho.fl.get(i).getF_count() <= 0) ) 
+		   {      
+			   // 삭제될 상품명을 저장
+			   String name = Cho.fl.get(i).getF_name();
+			   // 삭제될 수량 저장
+			   int deleteAmount = Cho.fl.get(i).getF_su(); 
+			   
+			   // 유통기한 지난 상품 fl 리스트에서 제거
+			   Cho.fl.remove(i);
+			   
+			   // tot 리스트에서 수량 업데이트 해주기 위한 반복문
+			   for(int k = 0; k < Cho.tot.size(); k++) 
+			   {
+				  // tot 리스트에서  저장한 상품명과 같은 상품 찾기 
+				  if(Cho.tot.get(k).getFt_name().equals(name)) 
+				  {
+					  // 같은 상품의 총 수량을 얻어 저장한다
+					  int tot = Cho.tot.get(k).getFt_tot();
+					  // 얻어낸 수량에서 삭제된 수량을 뺀후 수량을 업데이트 해준다.
+					  Cho.tot.get(k).setFt_tot(tot - deleteAmount);
+					  System.out.println("여기");
+					  break;
+				  }				  
+			   }
+		   }		       
+      }   
+   		// boksa() 메소드를 호출하여 fl의 복사본을 생성한다.
+		Cho.fl_cl = Cho.boksa(Cho.fl);
+		// boksa_tot() 메소드를 호출하여 fl_tot의 복사본을 생성한다.
+		Cho.fl_tot_cl = Cho.boksa_tot(Cho.tot);
    }
      
-	 //하루에 한번 유통기한 count가 1씩 감소하고  유통기한 7일 지난 상품 자동 삭제해주는 메소드
-	 public static void stf_CheckExp(){
+   // 하루에 한번 유통기한 count를 감소시키는 메소드
+   public static void stf_CheckExp()
+   {
          
-		 // 시간을 설정 할수 있게 Calendar 를 생성한다.
+		 // 시간을 설정 할 수 있게 Calendar 를 생성한다.
          Calendar cal = Calendar.getInstance();
+         System.out.println(cal.getTime());
          // 시작 할 시간을 설정한다.
-         cal.set(2020,8,10,16,18); 
-        
+         cal.set(2020,7,19,16,59); 
+         System.out.println(cal.getTime());
          
          //주석풀게되면 count가 하나씩 줄어들어서 일단 주석처리
          Timer m_timer = new Timer();
          TimerTask m_task = new TimerTask(){
          
          @Override
-            public void run(){
+         public void run(){
         	 
                //카운트 -1해주는 부분
-               System.out.println("시작");
                for(int i =0; i<Cho.fl.size(); i++)
                   Cho.fl.get(i).setF_count((Cho.fl.get(i).getF_count()-1));
                
@@ -981,8 +990,8 @@ class Staff
                stf_FExp_Del();               
             }
          };
-
-        m_timer.scheduleAtFixedRate(m_task,cal.getTime(),8000);
+        // run() 메소드를 하루에 한번  실행한다.
+        m_timer.scheduleAtFixedRate(m_task,cal.getTime(),86400000); 
       
    }
 
