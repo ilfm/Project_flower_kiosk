@@ -931,8 +931,8 @@ class Staff
 	   // 모든 상품의 카운트를 체크해준다.
 	   for(int i =0; i<Cho.fl.size()-1; i++)
 	   {		  		   
-		   // 입고 날짜가 현재 날짜 기준 일주일이 지나면 재고에서 자동 삭제 된다. 
-		   if((Cho.fl.get(i).getF_count() <= 0) ) 
+		   // 유통기한 count가 0인 경우
+		   if((Cho.fl.get(i).getF_count() == 0) ) 
 		   {      
 			   // 삭제될 상품명을 저장
 			   String name = Cho.fl.get(i).getF_name();
@@ -975,8 +975,9 @@ class Staff
          cal.set(2020,7,19,16,59); 
          System.out.println(cal.getTime());
          
-         //주석풀게되면 count가 하나씩 줄어들어서 일단 주석처리
+         // 타이머 생성
          Timer m_timer = new Timer();
+         // 타이머 테스크 생성
          TimerTask m_task = new TimerTask(){
          
          @Override

@@ -101,7 +101,7 @@ class D_RandomFlower
 				}
 			}
 		}
-
+		// 정렬하기 
 		for (int i=0; i<Cho.length-1; i++)
 		{
 			for (int j=i+1; j<Cho.length; j++)
@@ -116,7 +116,7 @@ class D_RandomFlower
 
 			}
 		}
-
+		
 		for (int i=1; i<Cho.length; i++)
 		{
 			fl_su[i].ft_realrank = fl_su[i-1].ft_realrank;
